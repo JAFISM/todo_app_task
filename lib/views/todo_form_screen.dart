@@ -53,17 +53,23 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
       appBar: AppBar(
         title: Text(widget.todo != null ? 'Edit Todo' : 'Add Todo'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              TextFormField(
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.indigo.withOpacity(0.3)
+              ),
+              child: TextFormField(
                 initialValue: _title,
                 decoration: const InputDecoration(
                   labelText: 'Title',
+                  contentPadding: EdgeInsets.only(left: 10),
+                  border: InputBorder.none,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -77,11 +83,22 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
                   });
                 },
               ),
-              const SizedBox(height: 16.0),
-              TextFormField(
+            ),
+            const SizedBox(height: 16.0),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              height: MediaQuery.of(context).size.height/3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.indigo.withOpacity(0.3)
+              ),
+              child: TextFormField(
                 initialValue: _description,
+                maxLines: 10,
                 decoration: const InputDecoration(
-                  labelText: 'Description',
+                  contentPadding: EdgeInsets.only(left: 10,top: 8),
+                  hintText: 'Description',
+                  border: InputBorder.none
                 ),
                 onChanged: (value) {
                   setState(() {
@@ -89,13 +106,16 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
                   });
                 },
               ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
+            ),
+            const SizedBox(height: 16.0),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: ElevatedButton(
                 onPressed: _submitForm,
                 child: Text(widget.todo != null ? 'update' : 'save')
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
