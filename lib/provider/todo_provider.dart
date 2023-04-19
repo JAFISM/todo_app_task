@@ -27,11 +27,18 @@ class TodoProvider with ChangeNotifier {
     updateTodoInDatabase(index, _todos[index]);
   }
 
-  void removeTodoFromList(int index) {
+  void removeTodoFromList(int index) async {
+    final box = await Hive.openBox<Todo>('todoBox');
+    await box.deleteAt(index);
+    await box.close();
     _todos.removeAt(index);
-    //updateTodoInDatabase(index, _todos[index]);
     notifyListeners();
   }
+  // void removeTodoFromList(int index) {
+  //   _todos.removeAt(index);
+  //   updateTodoInDatabase(index, _todos[index]);
+  //   notifyListeners();
+  // }
 
   void editTodoInList(int index, Todo todo) {
     _todos[index] = todo;

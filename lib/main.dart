@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor:Colors.white
         ),
         debugShowCheckedModeBanner: false,
-        home:  TodoListScreen(),
+        home:  const TodoListScreen(),
       ),
     );
   }
