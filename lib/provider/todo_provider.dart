@@ -34,11 +34,6 @@ class TodoProvider with ChangeNotifier {
     _todos.removeAt(index);
     notifyListeners();
   }
-  // void removeTodoFromList(int index) {
-  //   _todos.removeAt(index);
-  //   updateTodoInDatabase(index, _todos[index]);
-  //   notifyListeners();
-  // }
 
   void editTodoInList(int index, Todo todo) {
     _todos[index] = todo;

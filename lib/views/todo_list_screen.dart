@@ -23,7 +23,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo List'),
+        title: const Text('Welcome'),
       ),
       body: Consumer<TodoProvider>(
         builder: (context, provider, child) {
@@ -66,15 +66,17 @@ class _TodoListScreenState extends State<TodoListScreen> {
                             ),
                           );
                         },
-                        child: const Icon(Icons.edit,color: Colors.indigo,),
+                        child: const Icon(Icons.edit,color: Colors.indigo,size: 25,),
                       ),
                       GestureDetector(
                         onTap: (){
                           provider.removeTodoFromList(index);
                         },
                         child: Container(
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: Colors.red,),
-                            child: const Icon(Icons.delete,color: Colors.white,size: 25,)),
+                          height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(4),color: Colors.red,),
+                            child: const Icon(Icons.delete,color: Colors.white,size: 20,)),
                       ),
                     ],
                   ),
@@ -105,7 +107,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
               MaterialPageRoute(builder: (_) => const TodoFormScreen()),
             );
           },
-          child: const Text("ADD ToDo",style: TextStyle(fontWeight: FontWeight.bold),),
+          child: const Text("Add Task",style: TextStyle(fontWeight: FontWeight.bold),),
         ),
       ),
     );

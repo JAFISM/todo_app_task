@@ -10,7 +10,6 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TodoAdapter());
-  await Hive.openBox('todos');
   runApp(const MyApp());
 }
 

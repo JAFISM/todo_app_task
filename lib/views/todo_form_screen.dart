@@ -50,6 +50,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(widget.todo != null ? 'Edit Todo' : 'Add Todo'),
       ),
@@ -59,7 +60,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.indigo.withOpacity(0.3)
@@ -96,7 +97,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
                 initialValue: _description,
                 maxLines: 10,
                 decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 10,top: 8),
+                  contentPadding: EdgeInsets.only(left: 10,top: 10,right: 10),
                   hintText: 'Description',
                   border: InputBorder.none
                 ),
